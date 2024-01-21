@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:MVVM_app.Behaviors"
+             
+             x:Class="MVVM_app.Views.DBFriendPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nimi:"/>
+            <Entry x:Name="EntryName" Placeholder="Boriss Kotkov" Text="{Binding Name}" IsEnabled="False"/>
+            <Label Text="Sünnipäev:"/>
+            <DatePicker x:Name="DatePickerBirthday" Date="{Binding Birthday}" IsEnabled="False" />
+            <Label Text="Email:"/>
+            <Entry x:Name="EntryEmail" Placeholder="boriss.kotkov@gmail.com" Text="{Binding Email}" IsEnabled="False">
+                <Entry.Behaviors>
+                    <local:EmailValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Telefon:"/>
+            <Entry x:Name="EntryPhoneNumber" Placeholder="+37256047189" Text="{Binding PhoneNumber}" IsEnabled="False" Keyboard="Numeric" />
+            <Label Text="Sinu sodiaagimärk:"/>
+            <Picker x:Name="OnePicker" Title="Choose your sign" VerticalOptions="CenterAndExpand" />
+            <Image x:Name="selectedImage" HeightRequest="150" WidthRequest="150" />
+            <Button Text="Select" HorizontalOptions="CenterAndExpand" Clicked="OnSelectButtonClicked" />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="Salvesta" Text="Salvesta" Clicked="Salvesta_Clicked"/>
+                <Button x:Name="Kustuta" Text="Kustuta" Clicked="Kustuta_Clicked"/>
+                <Button x:Name="Loobu" Text="Loobu" Clicked="Loobu_Clicked"/>
+                <Button x:Name="EditButton" Text="Muuda" Clicked="EditButton_Clicked" IsVisible="True" />
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Entry x:Name="tel_nr" Placeholder="Kirjuta text siia"></Entry>
+                <Button x:Name="sms_btn" Text="Saada sms sõbrale" Clicked="sms_btn_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
